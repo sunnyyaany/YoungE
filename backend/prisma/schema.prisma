@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  phoneNumber String @unique
+  password  String
+  name      String
+  gender    String   // "M" or "F"
+  birthDate DateTime
+  tier      String   @default("Starter") // Starter, Pro, Master
+  createdAt DateTime @default(now())
+
+  // 관계 설정
+  sajuProfile SajuProfile?
+  matchHistoryAsA MatchHistory[] @relation("UserA")
+  matchHistoryAsB MatchHistory[] @relation("UserB")
+}
+
+model SajuProfile {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  
+  // 만세력 데이터
+  ilgan     String
+  jiji      String   // JSON 문자열 처리 (예: '["자","축","인","묘"]')
+  fiveElementsCount String // JSON 문자열 처리 (예: '{"목":1, "화":2...}')
+  
+  updatedAt DateTime @updatedAt
+}
+
+model MatchHistory {
+  id        String   @id @default(uuid())
+  userAId   String
+  userBId   String
+  
+  userA     User     @relation("UserA", fields: [userAId], references: [id])
+  userB     User     @relation("UserB", fields: [userBId], references: [id])
+  
+  totalScore Int
+  ilganScore Int
+  fiveElementsScore Int
+  jijiScore Int
+  biorhythmScore Int
+  
+  createdAt DateTime @default(now())
+}

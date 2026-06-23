@@ -1,0 +1,35 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+.page-content {
+  flex: 1;
+  padding: 24px;
+  padding-bottom: 80px; /* Space for bottom nav */
+  animation: fadeUp var(--transition-normal) forwards;
+}
+
+/* Premium Layout Elements */
+.header {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(15, 10, 28, 0.6);
+  border-bottom: var(--border-glass);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
