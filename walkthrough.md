@@ -110,9 +110,12 @@ PASS src/algorithm/compatibility.test.ts
 ### 3. 오픈소스 만세력 라이브러리 연동 (Phase 7)
 *   `manseryeok` 패키지를 도입하여, 생년월일시만 입력하면 명리학에 기반한 정확한 사주 원국(천간, 지지, 오행 분포)을 자동 추출하는 어댑터를 완성했습니다.
 
-### 4. 프로덕션 배포 가이드 세팅 (Phase 8)
-*   **Vercel (프론트엔드)** 및 **Render (백엔드)** 에 즉시 올릴 수 있도록 `vercel.json`, `render.yaml`, `Dockerfile` 세팅을 모두 마쳤습니다.
-*   자세한 배포 가이드는 [DEPLOYMENT_GUIDE.md](file:///C:/Users/rebir/.gemini/antigravity-ide/brain/6028195e-6ca4-4f30-a433-8f902f52e848/DEPLOYMENT_GUIDE.md) 에서 확인할 수 있습니다.
+### 4. 프로덕션 배포 환경 최적화 및 버그 수정 (Phase 8)
+*   **Vercel (프론트엔드)** 및 **Render (백엔드)** 에 즉시 올릴 수 있도록 환경을 구축했습니다. (`vercel.json`, `render.yaml`, `Dockerfile`)
+*   **[최근 업데이트] 배포 오류 방지를 위한 핵심 수정 사항 반영 완료:**
+    *   `backend/package.json`: Render Docker 빌드를 위한 `build`, `start` 스크립트 추가
+    *   `backend/tsconfig.json`: TypeScript 빌드 산출물 경로(`outDir: "./dist"`) 명시
+    *   `frontend/src/utils/api.ts`: API 통신 주소를 로컬 호스트에서 환경 변수(`VITE_API_URL`)로 동적 참조하도록 수정
 
 ---
 
