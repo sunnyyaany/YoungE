@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: young-e-api
+    name: yeoniassi-api
     env: docker
     rootDir: backend
     region: singapore
