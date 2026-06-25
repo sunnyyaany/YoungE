@@ -58,4 +58,5 @@
 ## Phase 8: 프로덕션 배포 세팅 (Launch)
 - `[x]` 로컬 SQLite -> PostgreSQL 데이터베이스 마이그레이션 가이드
 - `[x]` 백엔드 서버 클라우드 배포 (AWS/Render) 파일 세팅
+    - `[x]` Render 환경(Docker) 최적화 및 빌드 에러 해결 (TypeScript 설정, OpenSSL 추가)
 - `[x]` 프론트엔드 Vercel/Netlify 호스팅 및 도메인 연결 파일 세팅
